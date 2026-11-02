@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tịnh Tâm · Chánh Điện Online</title>
+<meta name="description" content="Chánh điện online: cùng nhau tụng kinh, dâng hương, thỉnh chuông.">
+<meta property="og:title" content="Tịnh Tâm · Chánh Điện Online">
+<meta property="og:description" content="Cùng nhau tụng kinh, dâng hương, thỉnh chuông.">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/kentjuno/chanh-dien-online@main/assets/hall.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🪷%3C/text%3E%3C/svg%3E">
+<style>
+  html,body{margin:0;height:100%;background:#120b08;color:#e9d9b8;font:16px/1.5 system-ui,sans-serif}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0;background:#120b08}
+  #msg{display:grid;place-items:center;height:100%;padding:24px;text-align:center}
+  a{color:#e2b04f}
+</style>
+</head>
+<body>
+<div id="msg" hidden></div>
+<script>
+/* ===== CHỈ CẦN SỬA 2 DÒNG NÀY =====
+   APP_URL: dán link ứng dụng web Apps Script (kết thúc bằng /exec).
+   MODE: 'iframe'   = giữ link ngắn trên thanh địa chỉ (khuyên dùng)
+         'redirect' = chuyển hẳn sang link Apps Script (dùng nếu 'iframe' bị lỗi trên máy nào đó) */
+const APP_URL = 'https://script.google.com/macros/s/AKfycbyu1e9C3DaHPg2AcjPLmZ3bDGlWAobLPj7qGmQTM-wbXSf8gnwrTvF5ShzIN4bfAAtt/exec';
+const MODE = 'iframe';
+/* ================================== */
+const msg = document.getElementById('msg');
+function show(html){ msg.innerHTML = html; msg.hidden = false; }
+if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(APP_URL)){
+  show('Chưa dán link Apps Script. Mở file <b>index.html</b> này, sửa dòng <code>APP_URL</code> thành link kết thúc bằng <code>/exec</code>.');
+} else if (MODE === 'redirect'){
+  location.replace(APP_URL);
+} else {
+  const f = document.createElement('iframe');
+  f.src = APP_URL; f.title = 'Chánh Điện Online';
+  f.allow = 'autoplay; fullscreen; clipboard-write';
+  document.body.append(f);
+}
+</script>
+<noscript><p style="padding:24px">Trang cần bật JavaScript để hiển thị chánh điện.</p></noscript>
+</body>
+</html>
